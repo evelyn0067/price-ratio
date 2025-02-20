@@ -73,10 +73,10 @@ def get_time_range(selected_time):
     end_time = pd.to_datetime('now')
     if selected_time == '2year':
         start_time = end_time - pd.DateOffset(years=2)
+    elif selected_time == '6month':
+        start_time = end_time - pd.DateOffset(months=6)
     elif selected_time == '1month':
         start_time = end_time - pd.DateOffset(months=1)
-    elif selected_time == '1day':
-        start_time = end_time - pd.DateOffset(days=1)
     return start_time, end_time
 
 # 主函数
@@ -84,7 +84,7 @@ def main():
     st.title('Token Price Ratio Dashboard')
 
     # 选择时间范围
-    time_choices = ['2year', '1month', '1day']
+    time_choices = ['2year', '6month', '1month']
     selected_time = st.selectbox('选择时间范围', time_choices)
 
     # 选择时间间隔
